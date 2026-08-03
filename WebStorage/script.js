@@ -25,6 +25,9 @@ function cadastrarFerramenta(){
 
     // Salvar os dados no localStorage
     localStorage.setItem('ferramentas', JSON.stringify(ferramentas));
+
+    // chama a função para atualizar a tabela
+    exibirFerramentas();
 }
 
 // Função responsavel por exibir as ferramentas
@@ -39,7 +42,41 @@ function exibirFerramentas(){
         tabela.innerHTML += `
             <tr>
                 <td>${ferramenta.nome}</td>
+                <td>${ferramenta.setor}</td>
+                <td>${ferramenta.quantidade}</td>
+                <td>
+                    <button
+                    type="button"
+                    class="btn btn-danger" 
+                    onclick="excluirFerramenta(${indice})"
+                    >Excluir</button>
+                </td>
             </tr>
         `;
     });
 }
+
+// Função que apaga todos os registros
+function limparCadastros(){
+    // Remover tudo da chave ferramentas o local storage
+    localStorage.removeItem('ferramentas');
+
+    // Limpa a variavel
+    ferramentas = [];
+
+    // Atualizar a tabela
+    exibirFerramentas();
+}
+
+// Função que exclui apenas 1 ferramenta
+function excluirFerramenta(indice){
+    // Retirar do array
+    ferramentas.splice(indice, 1);
+
+    localStorage.setItem('ferramentas', JSON.stringify(ferramentas));
+
+    exibirFerramentas();
+}
+
+// Carrega a tabela assim que a página aparecer
+exibirFerramentas();
