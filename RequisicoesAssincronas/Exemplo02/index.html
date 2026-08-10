@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de DDD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h4 class="mt-4">Buscar regiões pelo DDD</h4>
+        <div class="mb-3">
+            <label for="ddd" class="form-label">DDD</label>
+            <input type="text" class="form-control" id="ddd">
+            <button class="btn btn-primary w-100 mt-2" onclick="buscarDDD()">Buscar DDD</button>
+        </div>
+
+        <!-- Tabela com dados API -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Cidade</th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+                <!-- Aqui será contruido as linhas com o JS -->
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
