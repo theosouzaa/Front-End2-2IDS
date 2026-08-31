@@ -40,6 +40,8 @@ async function consultarCep(event) {
         return;
     }
 
+    mensagem.textContent = "Consultando CEP...";
+
     // Fazer consulta na API do ViaCep
     try {
         // Faz a busca
@@ -74,6 +76,57 @@ async function consultarCep(event) {
         // Retirar o hidden do campo
         resultado.hidden = false;
         mensagem.textContent = "Endereço encontrado!"
+
+    } catch (error) {
+        mensagem.textContent = error.mensage;
+        console.log(error);
+    }
+
+}
+
+const data = document.querySelector("#data");
+
+// Criando a função que busca informar os feriados
+async function consultarFeriado(event) {
+    // Travar envio do HTML
+    event.preventDefault();
+
+    // Verificar se a data tem 8 números
+    if (data.length != 4) {
+        mensagem.textContent = "Digite o ano enter 1900 e 2199!";
+        return;
+    }
+
+    mensagem.textContent = "Consultando data...";
+
+    // Fazer consulta na API do brasilapi
+    try {
+        // Faz a busca
+        const resposta = await fetch(`https://brasilapi.com.br/api/feriados/v1/${data}`);
+
+        // Verifica se a solicitação deu certo
+        if (!resposta.ok) {
+            console.log('Erro ao buscar a data!');
+            return;
+        }
+
+        // Pega a resposta da API e transforma em JSON
+        const data = await resposta.json();
+
+        if (data.erro) {
+            console.log('Data inválida');
+            mensagem.textContent = 'Data não encontrada!';
+            return;
+        }
+
+        console.log(data);
+
+        // Mostrar na tela os dados da API que foram buscados
+        document.getElementById("data").textContent = data
+
+        // Retirar o hidden do campo
+        resultado.hidden = false;
+        mensagem.textContent = "Feriado encontrado!"
 
     } catch (error) {
         mensagem.textContent = error.mensage;
