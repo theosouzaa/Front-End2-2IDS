@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Controle de Cargas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Informações da página -->
+    <div class="container">
+        <div class="row text-center mt-2">
+            <h1>Formulário de Controle</h1>
+        </div>
+
+        <!-- Segunda linha -->
+        <div class="row">
+            <div class="alert alert-primary text-center" role="alert">
+                Passe as informações para validar o formulário.
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <h5>Formulário de Validação</h5>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Nome do Fornecedor</label>
+                <input type="text" class="form-control" id="nome">
+            </div>
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Material Entregue</label>
+                    <input type="text" class="form-control" id="material">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Quantidade</label>
+                    <input type="number" class="form-control" id="quantidade">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Nº Nota fiscal</label>
+                    <input type="number" class="form-control" id="notaFiscal">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">CEP</label>
+                    <input type="number" class="form-control" id="formCep">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Logradouro</label>
+                    <input type="text" class="form-control" id="logradouro">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Bairro</label>
+                    <input type="text" class="form-control" id="bairro">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" id="cidade">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Estado</label>
+                    <input type="text" class="form-control" id="estado">
+                </div>
+                <div class="mb-3">
+                    <label for="campoData" class="form-label">Data Prevista de Entrega</label>
+                    <input type="date" class="form-control" id="campoData">
+                </div>
+
+                <button type="submit" class="btn btn-primary col-md-12 mb-3">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Importando o Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- Immportando o script -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
