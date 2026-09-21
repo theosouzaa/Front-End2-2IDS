@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Anotações</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .topo {
+            background-color: #4f46e5;
+            color: white;
+            padding: 25px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+        }
+
+        .btn-primary {
+            background-color: #4f46e5;
+            border: none;
+        }
+
+        .texto-anotacao {
+            white-space: pre-wrap;
+        }
+    </style>
+    <!-- Importando o arquivo para transformar o site em um PWA -->
+     <link rel="manifest" href="./manifest.webmanifest">
+     <link rel="icon"  type="image/x-icon" href="./imgLogo.png">
+</head>
+
+<body>
+    <header class="topo text-center mb-4">
+        <div class="container">
+            <h1>Minhas Anotações</h1>
+            <p>Faça suas anotações</p>
+        </div>
+    </header>
+    <main class="container">
+        <div class="row">
+            <!-- Formulário -->
+            <section class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="mb-3">Nova anotação</h4>
+
+                        <form id="formAnotacao">
+                            <div class="mb-3">
+                                <label for="titulo" class="form-label">
+                                    Título
+                                </label>
+                                <input type="text" id="titulo" class="form-control"
+                                    placeholder="Estudar para a prova de amanhã">
+                            </div>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">
+                                    Descrição
+                                </label>
+                                <textarea id="descricao" class="form-control" rows="5"
+                                    placeholder="Digite a sua anotação "></textarea>
+                            </div>
+                            <div id="mensagem"></div>
+
+                            <button type="submit" class="btn btn-primary w-100">Salvar Anotação</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="mb-0">Minhas anotações</h4>
+                            <span id="contador" class="badge bg-primary">0
+                            </span>
+                        </div>
+                        
+                        <!-- As anotações serão inseridas aqui -->
+                         <div id="listaAnotacoes"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+</body>
+
+</html>
