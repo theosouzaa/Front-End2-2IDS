@@ -41,7 +41,7 @@ async function solicitarPermissao() {
     if (permissao == 'granted') {
         mensagem.textContent = 'Notificações Autorizadas';
         btnTestar.disabled = false;
-        return true; 
+        return true;
     }
 
     if (permissao == 'denied') {
@@ -52,3 +52,44 @@ async function solicitarPermissao() {
     mensagem.textContent = 'A autorização não foi concluída.';
     return false;
 }
+
+// exibe a notificação pelo service worker
+async function mostrarNotidicacao() {
+    if (Notification.permission != "granted") {
+        mensagem.textContent = "Primeiro autorize as notificações";
+        return;
+    }
+
+    const registro = registroServiceWorker || await navigator.serviceWorker.ready;
+
+    // Criar a notificação
+    await registro.showNotification('Nova atividade publicada!', {
+        body: 'A atividade de JavaScript está disponivel.',
+        icon: 'icone.png',
+        data: {
+            url: "./index.html"
+        }
+    });
+}
+
+// Após a pessoa clicar no botão ativar notificações, faz a pergunta se ala cai permitir as notificações
+btnAtivar.addEventListener('click', async function () {
+    if (!verificaSuporte()) {
+        return;
+    }
+
+    if (!registroServiceWorker) {
+        await registrarServiceWorker();
+    }
+
+    await solicitarPermissao()
+});
+
+btnTestar.addEventListener('click', mostrarNotidicacao);
+
+window.addEventListener("load", async function () {
+    if (!verificaSuporte()) {
+        return;
+    }
+    await registrarServiceWorker();
+});

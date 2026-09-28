@@ -14,5 +14,10 @@ self.addEventListener("notificationclick", function (event) {
                 return janela.focus();
             }
         }
+
+        // Abre uma nova janela quando necessário
+        if (clients.openWindow) {
+            return clients.openWindow(urlDestino);
+        }
     }))
 });
