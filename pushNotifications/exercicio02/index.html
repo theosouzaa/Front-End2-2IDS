@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Aluno - SENAI</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --senai-red: #E31018;
+            --senai-red-dark: #A80B11;
+            --senai-red-light: #FF2E36;
+        }
+
+        body {
+            background-color: #f4f5f7; /* Fundo limpo e suave */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 20px 0;
+        }
+
+        .main-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(227, 16, 24, 0.12);
+            background: #ffffff;
+            overflow: hidden;
+            max-width: 550px;
+            width: 100%;
+        }
+
+        /* Topo em Vermelho SENAI */
+        .card-header-senai {
+            background: linear-gradient(135deg, var(--senai-red) 0%, var(--senai-red-dark) 100%);
+            color: #ffffff;
+            padding: 22px 28px;
+            border-bottom: 3px solid var(--senai-red-dark);
+        }
+
+        .card-header-senai h4 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Estilização dos Botões */
+        .btn-custom {
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-custom:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(227, 16, 24, 0.25);
+        }
+
+        /* Botão Ativar - Vermelho SENAI */
+        .btn-ativar {
+            background-color: var(--senai-red);
+            border-color: var(--senai-red);
+            color: #ffffff;
+        }
+
+        .btn-ativar:hover {
+            background-color: var(--senai-red-dark);
+            border-color: var(--senai-red-dark);
+            color: #ffffff;
+        }
+
+        /* Botão Atividade - Escuro/Neutro */
+        .btn-atividade {
+            background-color: #212529;
+            border-color: #212529;
+            color: #ffffff;
+        }
+
+        .btn-atividade:hover {
+            background-color: #000000;
+            border-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Botão Reunião - Vermelho SENAI */
+        .btn-reuniao {
+            background-color: var(--senai-red);
+            border-color: var(--senai-red);
+            color: #ffffff;
+        }
+
+        .btn-reuniao:hover {
+            background-color: var(--senai-red-dark);
+            border-color: var(--senai-red-dark);
+            color: #ffffff;
+        }
+
+        /* Caixa de Mensagem / Status */
+        .status-box {
+            border-radius: 8px;
+            background-color: #fff5f5;
+            border-left: 4px solid var(--senai-red);
+            padding: 12px 16px;
+            font-weight: 500;
+            color: #333333;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-box:empty {
+            display: none;
+        }
+
+        .brand-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container px-3">
+        <div class="main-card mx-auto">
+            <!-- Cabeçalho do Card (SENAI Vermelho) -->
+            <div class="card-header-senai d-flex align-items-center justify-content-between">
+                <h4><i class="bi bi-bell-fill"></i> Portal do Aluno</h4>
+                <span class="brand-badge">SENAI</span>
+            </div>
+
+            <!-- Corpo do Card -->
+            <div class="card-body p-4">
+                <h5 class="card-title fw-bold text-dark mb-2">Central de Notificações</h5>
+                <p class="text-muted small mb-4">
+                    Mantenha-se informado sobre novos avisos, reuniões e atividades do seu curso.
+                </p>
+
+                <!-- Botão Principal de Ativação -->
+                <div class="d-grid mb-4">
+                    <button id="btnAtivar" class="btn btn-ativar btn-custom">
+                        <i class="bi bi-shield-check"></i> Ativar Notificações
+                    </button>
+                </div>
+
+                <hr class="my-4 text-muted">
+
+                <!-- Botões de Teste -->
+                <h6 class="text-uppercase text-secondary fw-bold small mb-3" style="letter-spacing: 0.5px;">
+                    Testar Notificações
+                </h6>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-between mb-3">
+                    <button id="btnTestar" class="btn btn-atividade btn-custom flex-fill" disabled>
+                        <i class="bi bi-journal-text"></i> Nova Atividade
+                    </button>
+
+                    <button id="btnReuniao" class="btn btn-reuniao btn-custom flex-fill" disabled>
+                        <i class="bi bi-calendar-event"></i> Nova Reunião
+                    </button>
+                </div>
+
+                <!-- Mensagem de Status -->
+                <div id="mensagem" class="status-box mt-3"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
