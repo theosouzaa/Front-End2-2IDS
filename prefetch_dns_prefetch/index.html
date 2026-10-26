@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefetch | DNS-Prefetch</title>
+
+    <!-- Importando CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Prefetch -->
+    <link rel="prefetch" href="detalhes.html" as="document">
+
+    <!-- DNS-Prefetch -->
+    <link rel="dns-prefetch" href="//viacep.com.br">
+</head>
+
+<body>
+    <main class="container">
+        <!-- Prefetch -->
+        <h1>Máquinas Cadastradas</h1>
+        <div class="card">
+            <h2>Torno CNC</h2>
+            <p>Equipaemntos utilizados para fabricação de peças.</p>
+            <a href="detalhes.html">Ver Detalhes</a>
+        </div>
+
+        <!-- DNS-Prefetch -->
+        <div class="card">
+            <h2>Consultar CEP</h2>
+            <form id="formCep">
+                <label for="cep">Digite seu CEP:</label>
+                <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9">
+
+                <button type="submit">Consultar CEP</button>
+            </form>
+
+            <p id="resultado"></p>
+        </div>
+
+        <!-- Prefethc -->
+        <div class="card">
+            <h2>Relatórios</h2>
+            <p>Visualise o relatório completo.</p>
+            <button type="button" id="btnRelatorio">Ver relatório</button>
+        </div>
+    </main>
+    <!-- Importa JS -->
+    <script src="script.js"></script>
+</body>
+</html>
